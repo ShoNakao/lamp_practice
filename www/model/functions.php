@@ -5,6 +5,7 @@ function dd($var){
   exit();
 }
 
+// 引数で渡されたurlにリダイレクト
 function redirect_to($url){
   header('Location: ' . $url);
   exit;
@@ -16,11 +17,14 @@ function get_get($name){
   };
   return '';
 }
-
+// POSTで送信された値の取得
 function get_post($name){
+  // POSTで値が送信されている場合
   if(isset($_POST[$name]) === true){
+    // 値をを戻り値として返す
     return $_POST[$name];
   };
+  // POSTで値が送信されていない場合、空を戻り値として返す
   return '';
 }
 
@@ -30,21 +34,24 @@ function get_file($name){
   };
   return array();
 }
-// セッションユーザ名の取得
+
+// 引数をキーとするセッションの取得
 function get_session($name){
-  // セッションユーザ名が存在する場合(ログインされている場合)
+  // 引数をキーとするセッションが存在する場合(ログインされている場合)
   if(isset($_SESSION[$name]) === true){
-    // 戻り値としてユーザ名を返す
+    // 戻り値として引数をキーとするセッションの値を返す
     return $_SESSION[$name];
   };
-  // セッションユーザ名が存在しない場合(ログインされていない場合)、空を返す
+  // 引数をキーとするセッションが存在しない場合(ログインされていない場合)、空を返す
   return '';
 }
 
+// セッションにユーザ名を登録
 function set_session($name, $value){
   $_SESSION[$name] = $value;
 }
 
+// エラーメッセージを定義
 function set_error($error){
   $_SESSION['__errors'][] = $error;
 }
@@ -62,6 +69,7 @@ function has_error(){
   return isset($_SESSION['__errors']) && count($_SESSION['__errors']) !== 0;
 }
 
+// 完了メッセージを定義
 function set_message($message){
   $_SESSION['__messages'][] = $message;
 }
@@ -74,6 +82,7 @@ function get_messages(){
   set_session('__messages',  array());
   return $messages;
 }
+
 // ログインチェック
 function is_logined(){
   // ユーザ名を引数として渡して、

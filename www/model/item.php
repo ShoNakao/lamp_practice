@@ -22,6 +22,7 @@ function get_item($db, $item_id){
   return fetch_query($db, $sql);
 }
 
+// 商品情報を取得
 function get_items($db, $is_open = false){
   $sql = '
     SELECT
@@ -39,7 +40,7 @@ function get_items($db, $is_open = false){
       WHERE status = 1
     ';
   }
-
+  // sqlを実行して結果を返す
   return fetch_all_query($db, $sql);
 }
 
@@ -47,7 +48,9 @@ function get_all_items($db){
   return get_items($db);
 }
 
+// 公開されている商品情報を取得
 function get_open_items($db){
+  // (item_id,name,stock,price,image,status)を返す
   return get_items($db, true);
 }
 

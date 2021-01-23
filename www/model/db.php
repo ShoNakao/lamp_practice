@@ -1,5 +1,6 @@
 <?php
 
+// dbに接続した状態を戻り値として返す
 function get_db_connect(){
   // MySQL用のDSN文字列
   $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST .';charset='.DB_CHARSET;
@@ -16,6 +17,7 @@ function get_db_connect(){
   return $dbh;
 }
 
+// sqlを実行してdbから１行の結果を取得
 function fetch_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
@@ -27,6 +29,7 @@ function fetch_query($db, $sql, $params = array()){
   return false;
 }
 
+// sqlを実行してdbから複数行の結果を取得
 function fetch_all_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);

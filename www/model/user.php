@@ -2,6 +2,7 @@
 require_once MODEL_PATH . 'functions.php';
 require_once MODEL_PATH . 'db.php';
 
+// ユーザidに紐づく各情報をdbから取得
 function get_user($db, $user_id){
   $sql = "
     SELECT
@@ -15,10 +16,11 @@ function get_user($db, $user_id){
       user_id = {$user_id}
     LIMIT 1
   ";
-
+  // sqlを実行して結果を返す
   return fetch_query($db, $sql);
 }
 
+// ユーザ名に紐づく各情報をdbから取得
 function get_user_by_name($db, $name){
   $sql = "
     SELECT
@@ -36,18 +38,25 @@ function get_user_by_name($db, $name){
   return fetch_query($db, $sql);
 }
 
+// ログイン情報の照合及び取得
 function login_as($db, $name, $password){
+  // ユーザ名に紐づく各情報をdbから取得
   $user = get_user_by_name($db, $name);
+  // dbにユーザ名が存在しない、またはパスワードが違う場合は
   if($user === false || $user['password'] !== $password){
     return false;
   }
+  // ユーザ名・パスワードともに確認できた場合、セッションにユーザ名を登録
   set_session('user_id', $user['user_id']);
   return $user;
 }
 
+// ログインしているユーザの情報を取得
 function get_login_user($db){
+  // セッションからuser_idを取得
   $login_user_id = get_session('user_id');
-
+  // ユーザidに紐づく各情報をdbから取得
+  // (user_id,name,password,type)を返す
   return get_user($db, $login_user_id);
 }
 
