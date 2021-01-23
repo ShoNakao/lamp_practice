@@ -30,11 +30,14 @@ function get_file($name){
   };
   return array();
 }
-
+// セッションユーザ名の取得
 function get_session($name){
+  // セッションユーザ名が存在する場合(ログインされている場合)
   if(isset($_SESSION[$name]) === true){
+    // 戻り値としてユーザ名を返す
     return $_SESSION[$name];
   };
+  // セッションユーザ名が存在しない場合(ログインされていない場合)、空を返す
   return '';
 }
 
@@ -71,8 +74,10 @@ function get_messages(){
   set_session('__messages',  array());
   return $messages;
 }
-
+// ログインチェック
 function is_logined(){
+  // ユーザ名を引数として渡して、
+  // ログインされている場合はtrue、ログインされていない場合はfalseを戻り値として返す
   return get_session('user_id') !== '';
 }
 

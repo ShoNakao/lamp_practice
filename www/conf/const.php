@@ -1,11 +1,14 @@
 <?php
+// 各定数が定義されている
 
+// modelフォルダのパスを定義
 define('MODEL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../model/');
+// viewフォルダのパスを定義
 define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 
 
 define('IMAGE_PATH', '/assets/images/');
-define('STYLESHEET_PATH', '/assets/css/');
+define('STYLESHEET_PATH', '/assets/css/');  // cssフォルダのパスを定義
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );
 
 define('DB_HOST', 'mysql');
@@ -17,7 +20,7 @@ define('DB_CHARSET', 'utf8');
 define('SIGNUP_URL', '/signup.php');
 define('LOGIN_URL', '/login.php');
 define('LOGOUT_URL', '/logout.php');
-define('HOME_URL', '/index.php');
+define('HOME_URL', '/index.php');       // HOME(index.php)のパスを定義
 define('CART_URL', '/cart.php');
 define('FINISH_URL', '/finish.php');
 define('ADMIN_URL', '/admin.php');
