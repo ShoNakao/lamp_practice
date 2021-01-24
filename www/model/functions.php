@@ -17,6 +17,7 @@ function get_get($name){
   };
   return '';
 }
+
 // POSTで送信された値の取得
 function get_post($name){
   // POSTで値が送信されている場合
@@ -117,13 +118,17 @@ function delete_image($filename){
 }
 
 
-
+// 文字数の妥当性チェック
 function is_valid_length($string, $minimum_length, $maximum_length = PHP_INT_MAX){
+  // 文字数を取得
   $length = mb_strlen($string);
+  // 文字列が最小文字数以上かつ最大文字数以下ならTRUE,でなければFALSE
   return ($minimum_length <= $length) && ($length <= $maximum_length);
 }
 
+// 半角英数字の正規表現によるバリデーション
 function is_alphanumeric($string){
+  // 半角英数字の場合はTRUE,出ない場合はFALSEを返す
   return is_valid_format($string, REGEXP_ALPHANUMERIC);
 }
 
@@ -131,7 +136,9 @@ function is_positive_integer($string){
   return is_valid_format($string, REGEXP_POSITIVE_INTEGER);
 }
 
+// 正規表現でバリデーション
 function is_valid_format($string, $format){
+  // 正規表現にマッチする場合はTRUE,しない場合はFALSEを返す
   return preg_match($format, $string) === 1;
 }
 

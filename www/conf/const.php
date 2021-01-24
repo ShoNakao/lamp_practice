@@ -19,18 +19,18 @@ define('DB_CHARSET', 'utf8');
 
 define('SIGNUP_URL', '/signup.php');
 define('LOGIN_URL', '/login.php');      // ログイン画面(login.php)のパスを定義
-define('LOGOUT_URL', '/logout.php');
-define('HOME_URL', '/index.php');       // HOME(index.php)のパスを定義
-define('CART_URL', '/cart.php');
+define('LOGOUT_URL', '/logout.php');    // ログアウト画面(logout.php)のパスを定義
+define('HOME_URL', '/index.php');       // HOME画面(index.php)のパスを定義
+define('CART_URL', '/cart.php');        // cart画面(cart.php)のパスを定義
 define('FINISH_URL', '/finish.php');
 define('ADMIN_URL', '/admin.php');      // 管理者用ページ(admin.php)のパスを定義
 
-define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');
+define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');          // 半角英数字の正規表現を定義
 define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');
 
 
-define('USER_NAME_LENGTH_MIN', 6);
-define('USER_NAME_LENGTH_MAX', 100);
+define('USER_NAME_LENGTH_MIN', 6);      // 最小文字数を6に定義
+define('USER_NAME_LENGTH_MAX', 100);    // 最大文字数を100に定義
 define('USER_PASSWORD_LENGTH_MIN', 6);
 define('USER_PASSWORD_LENGTH_MAX', 100);
 

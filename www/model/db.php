@@ -41,6 +41,7 @@ function fetch_all_query($db, $sql, $params = array()){
   return false;
 }
 
+// sqlを実行して成功した場合に true を、失敗した場合に false を返す
 function execute_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
