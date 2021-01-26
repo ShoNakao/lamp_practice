@@ -2,6 +2,7 @@
 require_once MODEL_PATH . 'functions.php';
 require_once MODEL_PATH . 'db.php';
 
+// ユーザidに紐づくカート情報をdbから取得
 function get_user_carts($db, $user_id){
   $sql = "
     SELECT
@@ -23,6 +24,7 @@ function get_user_carts($db, $user_id){
     WHERE
       carts.user_id = {$user_id}
   ";
+  // sqlを実行して結果を返す
   return fetch_all_query($db, $sql);
 }
 
@@ -129,12 +131,13 @@ function delete_user_carts($db, $user_id){
   execute_query($db, $sql);
 }
 
-
+// 合計金額を計算
 function sum_carts($carts){
   $total_price = 0;
   foreach($carts as $cart){
     $total_price += $cart['price'] * $cart['amount'];
   }
+  // 合計金額を返す
   return $total_price;
 }
 

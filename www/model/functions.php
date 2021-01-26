@@ -5,6 +5,7 @@ function dd($var){
   exit();
 }
 
+// 引数で渡されたurlにリダイレクト
 function redirect_to($url){
   header('Location: ' . $url);
   exit;
@@ -17,10 +18,14 @@ function get_get($name){
   return '';
 }
 
+// POSTで送信された値の取得
 function get_post($name){
+  // POSTで値が送信されている場合
   if(isset($_POST[$name]) === true){
+    // 値をを戻り値として返す
     return $_POST[$name];
   };
+  // POSTで値が送信されていない場合、空を戻り値として返す
   return '';
 }
 
@@ -30,21 +35,24 @@ function get_file($name){
   };
   return array();
 }
-// セッションユーザ名の取得
+
+// 引数をキーとするセッションの取得
 function get_session($name){
-  // セッションユーザ名が存在する場合(ログインされている場合)
+  // 引数をキーとするセッションが存在する場合(ログインされている場合)
   if(isset($_SESSION[$name]) === true){
-    // 戻り値としてユーザ名を返す
+    // 戻り値として引数をキーとするセッションの値を返す
     return $_SESSION[$name];
   };
-  // セッションユーザ名が存在しない場合(ログインされていない場合)、空を返す
+  // 引数をキーとするセッションが存在しない場合(ログインされていない場合)、空を返す
   return '';
 }
 
+// セッションにユーザ名を登録
 function set_session($name, $value){
   $_SESSION[$name] = $value;
 }
 
+// エラーメッセージを定義
 function set_error($error){
   $_SESSION['__errors'][] = $error;
 }
@@ -62,6 +70,7 @@ function has_error(){
   return isset($_SESSION['__errors']) && count($_SESSION['__errors']) !== 0;
 }
 
+// 完了メッセージを定義
 function set_message($message){
   $_SESSION['__messages'][] = $message;
 }
@@ -74,6 +83,7 @@ function get_messages(){
   set_session('__messages',  array());
   return $messages;
 }
+
 // ログインチェック
 function is_logined(){
   // ユーザ名を引数として渡して、
@@ -108,13 +118,17 @@ function delete_image($filename){
 }
 
 
-
+// 文字数の妥当性チェック
 function is_valid_length($string, $minimum_length, $maximum_length = PHP_INT_MAX){
+  // 文字数を取得
   $length = mb_strlen($string);
+  // 文字列が最小文字数以上かつ最大文字数以下ならTRUE,でなければFALSE
   return ($minimum_length <= $length) && ($length <= $maximum_length);
 }
 
+// 半角英数字の正規表現によるバリデーション
 function is_alphanumeric($string){
+  // 半角英数字の場合はTRUE,出ない場合はFALSEを返す
   return is_valid_format($string, REGEXP_ALPHANUMERIC);
 }
 
@@ -122,7 +136,9 @@ function is_positive_integer($string){
   return is_valid_format($string, REGEXP_POSITIVE_INTEGER);
 }
 
+// 正規表現でバリデーション
 function is_valid_format($string, $format){
+  // 正規表現にマッチする場合はTRUE,しない場合はFALSEを返す
   return preg_match($format, $string) === 1;
 }
 
@@ -140,3 +156,6 @@ function is_valid_upload_image($image){
   return true;
 }
 
+function h($str){
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8')
+}
