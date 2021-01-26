@@ -60,7 +60,7 @@ function get_login_user($db){
   return get_user($db, $login_user_id);
 }
 
-// 登録するユーザ情報の妥当性チェック
+// 登録するユーザ情報の妥当性チェック及び登録
 function regist_user($db, $name, $password, $password_confirmation) {
   // 登録するユーザ情報が妥当でない場合
   if( is_valid_user($name, $password, $password_confirmation) === false){
@@ -72,7 +72,9 @@ function regist_user($db, $name, $password, $password_confirmation) {
   return insert_user($db, $name, $password);
 }
 
+// 管理者かどうかの判別
 function is_admin($user){
+  // 管理者(1=1)の場合TRUE、一般ユーザの場合はFALSEを返す
   return $user['type'] === USER_TYPE_ADMIN;
 }
 

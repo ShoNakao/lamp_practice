@@ -29,10 +29,14 @@ function get_post($name){
   return '';
 }
 
+// 送信されたファイル情報を取得
 function get_file($name){
+  // ファイルが存在する場合
   if(isset($_FILES[$name]) === true){
+    // ファイル名を返す
     return $_FILES[$name];
   };
+  // ファイルが存在しない場合、空の配列を返す
   return array();
 }
 
@@ -91,7 +95,9 @@ function is_logined(){
   return get_session('user_id') !== '';
 }
 
+
 function get_upload_filename($file){
+
   if(is_valid_upload_image($file) === false){
     return '';
   }
@@ -144,10 +150,15 @@ function is_valid_format($string, $format){
 
 
 function is_valid_upload_image($image){
+  // HTTP POST でファイルがアップロードされていない場合(セキュリティチェック)
   if(is_uploaded_file($image['tmp_name']) === false){
+    // エラーメッセージを定義
     set_error('ファイル形式が不正です。');
+    // FALSEを返す
     return false;
   }
+  // HTTP POST でファイルがアップロードされている場合
+  
   $mimetype = exif_imagetype($image['tmp_name']);
   if( isset(PERMITTED_IMAGE_TYPES[$mimetype]) === false ){
     set_error('ファイル形式は' . implode('、', PERMITTED_IMAGE_TYPES) . 'のみ利用可能です。');
@@ -157,5 +168,5 @@ function is_valid_upload_image($image){
 }
 
 function h($str){
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8')
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }

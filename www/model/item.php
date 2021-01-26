@@ -44,7 +44,9 @@ function get_items($db, $is_open = false){
   return fetch_all_query($db, $sql);
 }
 
+// 全ての商品情報を取得
 function get_all_items($db){
+  // 全ての商品情報を返す
   return get_items($db);
 }
 
@@ -54,7 +56,9 @@ function get_open_items($db){
   return get_items($db, true);
 }
 
+// 登録する商品情報の妥当性チェック及び登録
 function regist_item($db, $name, $price, $stock, $status, $image){
+  
   $filename = get_upload_filename($image);
   if(validate_item($name, $price, $stock, $filename, $status) === false){
     return false;
@@ -149,7 +153,9 @@ function delete_item($db, $item_id){
 
 // 非DB
 
+// ステータスが公開のものを判別
 function is_open($item){
+  // ステータスが公開の場合TRUE、非公開の場合FALSEを返す
   return $item['status'] === 1;
 }
 
