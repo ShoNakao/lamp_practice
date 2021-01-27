@@ -34,11 +34,15 @@ $stock = get_post('stock');
 // アップロードした画像のファイル名を取得
 $image = get_file('image');
 // 登録する商品情報の妥当性チェック及び登録
+// 登録に成功した場合
 if(regist_item($db, $name, $price, $stock, $status, $image)){
+  // 完了のメッセージを定義
   set_message('商品を登録しました。');
 }else {
+  // バリデーションに問題があった場合、または登録に失敗した場合
+  // エラーメッセージを定義
   set_error('商品の登録に失敗しました。');
 }
 
-
+// 管理者ページへリダイレクト
 redirect_to(ADMIN_URL);
