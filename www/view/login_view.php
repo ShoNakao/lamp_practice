@@ -5,7 +5,7 @@
   <?php include VIEW_PATH . 'templates/head.php'; ?>
   <title>ログイン</title>
   <!-- login画面に関係するCSSを読み込み -->
-  <link rel="stylesheet" href="<?php print(STYLESHEET_PATH . 'login.css'); ?>">
+  <link rel="stylesheet" href="<?php print(h(STYLESHEET_PATH . 'login.css')); ?>">
 </head>
 <body>
   <!-- headerの共通部分を読み込み -->
