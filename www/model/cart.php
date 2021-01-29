@@ -78,6 +78,7 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
   return execute_query($db, $sql);
 }
 
+// カートの購入数を更新
 function update_cart_amount($db, $cart_id, $amount){
   $sql = "
     UPDATE
@@ -88,6 +89,7 @@ function update_cart_amount($db, $cart_id, $amount){
       cart_id = {$cart_id}
     LIMIT 1
   ";
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
   return execute_query($db, $sql);
 }
 
