@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- <head>の共通部分を読み込み -->
   <?php include VIEW_PATH . 'templates/head.php'; ?>
   <title>商品管理</title>
-  <link rel="stylesheet" href="<?php print(STYLESHEET_PATH . 'admin.css'); ?>">
+  <!-- 管理者画面に関係するCSSを読み込み -->
+  <link rel="stylesheet" href="<?php print(h(STYLESHEET_PATH . 'admin.css')); ?>">
 </head>
 <body>
-  <?php 
-  include VIEW_PATH . 'templates/header_logined.php'; 
-  ?>
-
+  <!-- headerの共通部分を読み込み -->
+  <?php include VIEW_PATH . 'templates/header_logined.php'; ?>
   <div class="container">
     <h1>商品管理</h1>
-
+    <!-- messagesの共通部分を読み込み -->
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
     <form 
@@ -47,7 +47,7 @@
       <input type="submit" value="商品追加" class="btn btn-primary">
     </form>
 
-
+    <!-- dbに商品が存在する場合 -->
     <?php if(count($items) > 0){ ?>
       <table class="table table-bordered text-center">
         <thead class="thead-light">
@@ -61,19 +61,20 @@
         </thead>
         <tbody>
           <?php foreach($items as $item){ ?>
-          <tr class="<?php print(is_open($item) ? '' : 'close_item'); ?>">
-            <td><img src="<?php print(IMAGE_PATH . $item['image']);?>" class="item_image"></td>
-            <td><?php print($item['name']); ?></td>
-            <td><?php print(number_format($item['price'])); ?>円</td>
+          <!-- class名にステータスが公開のものはTRUE、非公開のものはFALSEを定義-->
+          <tr class="<?php print(h(is_open($item) ? '' : 'close_item')); ?>">
+            <td><img src="<?php print(h(IMAGE_PATH . $item['image']));?>" class="item_image"></td>
+            <td><?php print(h($item['name'])); ?></td>
+            <td><?php print(h(number_format($item['price']))); ?>円</td>
             <td>
               <form method="post" action="admin_change_stock.php">
                 <div class="form-group">
                   <!-- sqlインジェクション確認のためあえてtext -->
-                  <input  type="text" name="stock" value="<?php print($item['stock']); ?>">
+                  <input  type="text" name="stock" value="<?php print(h($item['stock'])); ?>">
                   個
                 </div>
                 <input type="submit" value="変更" class="btn btn-secondary">
-                <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <input type="hidden" name="item_id" value="<?php print(h($item['item_id'])); ?>">
               </form>
             </td>
             <td>
@@ -86,12 +87,12 @@
                   <input type="submit" value="非公開 → 公開" class="btn btn-secondary">
                   <input type="hidden" name="changes_to" value="open">
                 <?php } ?>
-                <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <input type="hidden" name="item_id" value="<?php print(h($item['item_id'])); ?>">
               </form>
 
               <form method="post" action="admin_delete_item.php">
                 <input type="submit" value="削除" class="btn btn-danger delete">
-                <input type="hidden" name="item_id" value="<?php print($item['item_id']); ?>">
+                <input type="hidden" name="item_id" value="<?php print(h($item['item_id'])); ?>">
               </form>
 
             </td>
@@ -99,6 +100,7 @@
           <?php } ?>
         </tbody>
       </table>
+    <!-- dbに商品が存在しない場合 -->  
     <?php } else { ?>
       <p>商品はありません。</p>
     <?php } ?> 

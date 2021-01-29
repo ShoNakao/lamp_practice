@@ -9,7 +9,7 @@ define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 
 define('IMAGE_PATH', '/assets/images/');
 define('STYLESHEET_PATH', '/assets/css/');  // cssフォルダのパスを定義
-define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );
+define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );  // imagesフォルダのパスを定義
 
 define('DB_HOST', 'mysql');
 define('DB_NAME', 'sample');
@@ -26,7 +26,7 @@ define('FINISH_URL', '/finish.php');
 define('ADMIN_URL', '/admin.php');      // 管理者用ページ(admin.php)のパスを定義
 
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');          // 半角英数字の正規表現を定義
-define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');
+define('REGEXP_POSITIVE_INTEGER', '/\A([1-9][0-9]*|0)\z/');   // 0以上の整数の正規表現を定義
 
 
 define('USER_NAME_LENGTH_MIN', 6);      // 最小文字数を6に定義
@@ -43,6 +43,7 @@ define('ITEM_NAME_LENGTH_MAX', 100);
 define('ITEM_STATUS_OPEN', 1);
 define('ITEM_STATUS_CLOSE', 0);
 
+// ステータスの配列を定義
 define('PERMITTED_ITEM_STATUSES', array(
   'open' => 1,
   'close' => 0,

@@ -24,7 +24,7 @@ $db = get_db_connect();
 
 // 入力したユーザ情報の登録
 try{
-  // 登録するユーザ情報の妥当性チェック
+  // 登録するユーザ情報の妥当性チェック及び登録
   $result = regist_user($db, $name, $password, $password_confirmation);
   // 登録するユーザ情報が妥当でない場合、または登録に失敗した場合
   if( $result=== false){
