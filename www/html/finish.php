@@ -13,9 +13,11 @@ if(is_logined() === false){
 
 $db = get_db_connect();
 $user = get_login_user($db);
-
+// // 特定のユーザのカートに入っている全ての商品情報をdbから取得
+// (items/item_id,name,price,stock,status,image carts/cart_id,user_id,amount)を取得
 $carts = get_user_carts($db, $user['user_id']);
 
+// カート内の商品を購入する
 if(purchase_carts($db, $carts) === false){
   set_error('商品が購入できませんでした。');
   redirect_to(CART_URL);

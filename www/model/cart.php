@@ -1,8 +1,10 @@
 <?php 
+// 関数を定義したファイルを読み込み
 require_once MODEL_PATH . 'functions.php';
+// dbに関するファイルを
 require_once MODEL_PATH . 'db.php';
 
-// ユーザidに紐づくカート情報をdbから取得
+// 特定のユーザのカートに入っている全ての商品情報をdbから取得
 function get_user_carts($db, $user_id){
   $sql = "
     SELECT
@@ -22,12 +24,13 @@ function get_user_carts($db, $user_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
   ";
   // sqlを実行して結果を返す
-  return fetch_all_query($db, $sql);
+  return fetch_all_query($db, $sql, [$user_id]);
 }
 
+// 特定のユーザのカートに入っている特定の商品の情報をdbから取得
 function get_user_cart($db, $user_id, $item_id){
   $sql = "
     SELECT
@@ -47,23 +50,30 @@ function get_user_cart($db, $user_id, $item_id){
     ON
       carts.item_id = items.item_id
     WHERE
-      carts.user_id = {$user_id}
+      carts.user_id = ?
     AND
-      items.item_id = {$item_id}
+      items.item_id = ?
   ";
-
-  return fetch_query($db, $sql);
+  // sqlを実行して結果を返す
+  return fetch_query($db, $sql, [$user_id, $item_id]);
 
 }
 
+// カートに商品を追加
+// 既にカートにある商品の場合は、購入数を１つプラス
 function add_cart($db, $user_id, $item_id ) {
+  // 特定のユーザのカートに入っている特定の商品の情報をdbから取得
   $cart = get_user_cart($db, $user_id, $item_id);
+  // カートが空またはデータベースでエラーが起きた場合は
   if($cart === false){
+    // カートに商品を追加
     return insert_cart($db, $user_id, $item_id);
   }
+  // カートにある商品の購入数を1つプラス
   return update_cart_amount($db, $cart['cart_id'], $cart['amount'] + 1);
 }
 
+// カートに商品を追加
 function insert_cart($db, $user_id, $item_id, $amount = 1){
   $sql = "
     INSERT INTO
@@ -72,10 +82,10 @@ function insert_cart($db, $user_id, $item_id, $amount = 1){
         user_id,
         amount
       )
-    VALUES({$item_id}, {$user_id}, {$amount})
+    VALUES(?, ?, ?)
   ";
-
-  return execute_query($db, $sql);
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
+  return execute_query($db, $sql, [$item_id, $user_id, $amount]);
 }
 
 // カートの購入数を更新
@@ -84,53 +94,61 @@ function update_cart_amount($db, $cart_id, $amount){
     UPDATE
       carts
     SET
-      amount = {$amount}
+      amount = ?
     WHERE
-      cart_id = {$cart_id}
+      cart_id = ?
     LIMIT 1
   ";
   // sqlを実行して成功した場合に true を、失敗した場合に false を返す
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, [$amount, $cart_id]);
 }
 
+// カート内の特定の商品を削除
 function delete_cart($db, $cart_id){
   $sql = "
     DELETE FROM
       carts
     WHERE
-      cart_id = {$cart_id}
+      cart_id = ?
     LIMIT 1
   ";
-
-  return execute_query($db, $sql);
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
+  return execute_query($db, $sql, [$cart_id]);
 }
 
+// カート内の商品を購入する
 function purchase_carts($db, $carts){
+  // カート内の商品が購入できない場合
   if(validate_cart_purchase($carts) === false){
+    // FALSEを返す
     return false;
   }
+  // カート内の商品が購入できる場合
   foreach($carts as $cart){
+    // 在庫数の更新に失敗した場合
     if(update_item_stock(
         $db, 
         $cart['item_id'], 
         $cart['stock'] - $cart['amount']
       ) === false){
+      // エラーメッセージを定義
       set_error($cart['name'] . 'の購入に失敗しました。');
     }
   }
-  
+  // 購入したユーザのカート内の全商品を削除
   delete_user_carts($db, $carts[0]['user_id']);
 }
 
+// 特定のユーザのカート内の全商品を削除
 function delete_user_carts($db, $user_id){
   $sql = "
     DELETE FROM
       carts
     WHERE
-      user_id = {$user_id}
+      user_id = ?
   ";
-
-  execute_query($db, $sql);
+  // sqlを実行
+  execute_query($db, $sql, [$user_id]);
 }
 
 // 合計金額を計算
@@ -143,22 +161,34 @@ function sum_carts($carts){
   return $total_price;
 }
 
+// カート内の商品が購入できるかバリデーション
 function validate_cart_purchase($carts){
+  // カートに商品が入っていない場合
   if(count($carts) === 0){
+    // エラーメッセージを定義
     set_error('カートに商品が入っていません。');
+    // FALSEを返す
     return false;
   }
+  // カートに商品が入っている場合
   foreach($carts as $cart){
+    // ステータスが非公開の場合
     if(is_open($cart) === false){
+      // エラーメッセージを定義
       set_error($cart['name'] . 'は現在購入できません。');
     }
+    // 購入数に対して在庫数が不足している場合
     if($cart['stock'] - $cart['amount'] < 0){
+      // エラーメッセージを定義
       set_error($cart['name'] . 'は在庫が足りません。購入可能数:' . $cart['stock']);
     }
   }
+  // エラーメッセージが定義されている場合
   if(has_error() === true){
+    // FALSEを返す
     return false;
   }
+   // エラーメッセージが定義されていない場合TRUEを返す
   return true;
 }
 

@@ -1,9 +1,12 @@
 <?php
+// 関数を定義したファイルを読み込み
 require_once MODEL_PATH . 'functions.php';
+// dbに関するファイルを
 require_once MODEL_PATH . 'db.php';
 
 // DB利用
 
+// 特定の商品の商品情報を取得
 function get_item($db, $item_id){
   $sql = "
     SELECT
@@ -16,10 +19,11 @@ function get_item($db, $item_id){
     FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
   ";
 
-  return fetch_query($db, $sql);
+  // sqlを実行してdbから１行の結果を取得
+  return fetch_query($db, $sql, [$item_id]);
 }
 
 // 商品情報を取得
@@ -102,26 +106,28 @@ function insert_item($db, $name, $price, $stock, $filename, $status){
         image,
         status
       )
-    VALUES('{$name}', {$price}, {$stock}, '{$filename}', {$status_value});
+    VALUES('?', ?, ?, '?', ?);
   ";
   // sqlを実行して成功した場合に true を、失敗した場合に false を返す
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, [$name, $price, $stock, $filename, $status_value]);
 }
 
+// ステータスの更新
 function update_item_status($db, $item_id, $status){
   $sql = "
     UPDATE
       items
     SET
-      status = {$status}
+      status = ?
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
-  
-  return execute_query($db, $sql);
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
+  return execute_query($db, $sql, [$status, $item_id]);
 }
 
+// 在庫数の更新
 function update_item_stock($db, $item_id, $stock){
   $sql = "
     UPDATE
@@ -132,7 +138,7 @@ function update_item_stock($db, $item_id, $stock){
       item_id = ?
     LIMIT 1
   ";
-  
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
   return execute_query($db, $sql, [$stock, $item_id]);
 }
 
@@ -151,22 +157,23 @@ function destroy_item($db, $item_id){
   return false;
 }
 
+// 特定の商品の削除
 function delete_item($db, $item_id){
   $sql = "
     DELETE FROM
       items
     WHERE
-      item_id = {$item_id}
+      item_id = ?
     LIMIT 1
   ";
-  
-  return execute_query($db, $sql);
+  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
+  return execute_query($db, $sql, [$item_id]);
 }
 
 
 // 非DB
 
-// ステータスが公開のものを判別
+// ステータスが公開か非公開か判別
 function is_open($item){
   // ステータスが公開の場合TRUE、非公開の場合FALSEを返す
   return $item['status'] === 1;
