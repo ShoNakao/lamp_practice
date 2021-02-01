@@ -106,7 +106,7 @@ function insert_item($db, $name, $price, $stock, $filename, $status){
         image,
         status
       )
-    VALUES('?', ?, ?, '?', ?);
+    VALUES(?, ?, ?, ?, ?);
   ";
   // sqlを実行して成功した場合に true を、失敗した場合に false を返す
   return execute_query($db, $sql, [$name, $price, $stock, $filename, $status_value]);
