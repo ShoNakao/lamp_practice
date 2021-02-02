@@ -70,7 +70,9 @@ function get_errors(){
   return $errors;
 }
 
+// エラーメッセージが定義されているか確認
 function has_error(){
+  // エラーメッセージが定義されている場合TRUE、定義されていない場合FALSEを返す
   return isset($_SESSION['__errors']) && count($_SESSION['__errors']) !== 0;
 }
 

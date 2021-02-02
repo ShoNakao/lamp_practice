@@ -1,5 +1,7 @@
 <?php
+// 関数を定義したファイルを読み込み
 require_once MODEL_PATH . 'functions.php';
+// dbに関するファイルを
 require_once MODEL_PATH . 'db.php';
 
 // ユーザidに紐づくユーザ情報をdbから取得
@@ -13,14 +15,14 @@ function get_user($db, $user_id){
     FROM
       users
     WHERE
-      user_id = {$user_id}
+      user_id = ?
     LIMIT 1
   ";
   // sqlを実行して結果を返す
-  return fetch_query($db, $sql);
+  return fetch_query($db, $sql, [$user_id]);
 }
 
-// ユーザ名に紐づく各情報をdbから取得
+// ユーザ名に紐づくユーザ情報をdbから取得
 function get_user_by_name($db, $name){
   $sql = "
     SELECT
@@ -31,11 +33,11 @@ function get_user_by_name($db, $name){
     FROM
       users
     WHERE
-      name = '{$name}'
+      name = ?
     LIMIT 1
   ";
-
-  return fetch_query($db, $sql);
+  // sqlを実行して結果を返す
+  return fetch_query($db, $sql, [$name]);
 }
 
 // ログイン情報の照合及び取得
@@ -131,9 +133,9 @@ function insert_user($db, $name, $password){
   $sql = "
     INSERT INTO
       users(name, password)
-    VALUES ('{$name}', '{$password}');
+    VALUES (?, ?);
   ";
   // 登録できた場合はTRUE、できなかった場合はFALSEを返す
-  return execute_query($db, $sql);
+  return execute_query($db, $sql, [$name, $password]);
 }
 
