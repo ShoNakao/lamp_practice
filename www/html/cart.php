@@ -1,4 +1,6 @@
 <?php
+// iframeの読み込みを禁止
+header('X-FRAME-OPTIONS: DENY');
 // 定数を定義したファイルを読み込み
 require_once '../conf/const.php';
 // 関数を定義したファイルを読み込み
