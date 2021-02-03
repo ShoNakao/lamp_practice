@@ -45,6 +45,7 @@
       </div>
       
       <input type="submit" value="商品追加" class="btn btn-primary">
+      <input type="hidden" name="csrf_token" value="<?php print $token; ?>">
     </form>
 
     <!-- dbに商品が存在する場合 -->
@@ -75,6 +76,7 @@
                 </div>
                 <input type="submit" value="変更" class="btn btn-secondary">
                 <input type="hidden" name="item_id" value="<?php print(h($item['item_id'])); ?>">
+                <input type="hidden" name="csrf_token" value="<?php print $token; ?>">
               </form>
             </td>
             <td>
