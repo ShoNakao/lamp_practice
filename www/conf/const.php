@@ -7,7 +7,7 @@ define('MODEL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../model/');
 define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 
 
-define('IMAGE_PATH', '/assets/images/');
+define('IMAGE_PATH', '/assets/images/');    // imagesフォルダパスを定義
 define('STYLESHEET_PATH', '/assets/css/');  // cssフォルダのパスを定義
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );  // imagesフォルダのパスを定義
 
@@ -40,8 +40,8 @@ define('USER_TYPE_NORMAL', 2);          // 一般ユーザは2
 define('ITEM_NAME_LENGTH_MIN', 1);
 define('ITEM_NAME_LENGTH_MAX', 100);
 
-define('ITEM_STATUS_OPEN', 1);
-define('ITEM_STATUS_CLOSE', 0);
+define('ITEM_STATUS_OPEN', 1);          // ステータスOPENを1に定義
+define('ITEM_STATUS_CLOSE', 0);         // ステータスCLOSEを0に定義
 
 // ステータスの配列を定義
 define('PERMITTED_ITEM_STATUSES', array(

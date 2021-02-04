@@ -30,6 +30,6 @@ $items = get_all_items($db);
 // トークンを生成
 $token = get_random_string();
 // SESSIONにトークンを登録
-set_session('csrf_token', $token)
+set_session('csrf_token', $token);
 // 管理者ページのファイルを読み込み
 include_once VIEW_PATH . '/admin_view.php';

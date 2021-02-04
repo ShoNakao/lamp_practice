@@ -12,7 +12,7 @@ session_start();
 // セッションに登録されたトークンを取得
 $session_token = get_session('csrf_token');
 // POSTで送信されたトークンを取得
-$post_token = get_post('csrf_token')
+$post_token = get_post('csrf_token');
 // トークンのチェックが問題ない場合
 if ($session_token !== '' && $post_token !== '' && $session_token === $post_token) {
   // ログインされていない場合(is_loginedからfalseが返ってきた場合)
