@@ -27,5 +27,9 @@ $user = get_login_user($db);
 $carts = get_user_carts($db, $user['user_id']);
 // 合計金額を取得
 $total_price = sum_carts($carts);
+// トークンを生成
+$token = get_random_string();
+// SESSIONにトークンを登録
+set_session('csrf_token', $token);
 // カートページのファイルを読み込む
 include_once VIEW_PATH . 'cart_view.php';

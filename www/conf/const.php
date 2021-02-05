@@ -17,7 +17,7 @@ define('DB_USER', 'testuser');
 define('DB_PASS', 'password');
 define('DB_CHARSET', 'utf8');
 
-define('SIGNUP_URL', '/signup.php');
+define('SIGNUP_URL', '/signup.php');    // ユーザ登録画面(signup.php)のパスを定義
 define('LOGIN_URL', '/login.php');      // ログイン画面(login.php)のパスを定義
 define('LOGOUT_URL', '/logout.php');    // ログアウト画面(logout.php)のパスを定義
 define('HOME_URL', '/index.php');       // HOME画面(index.php)のパスを定義
