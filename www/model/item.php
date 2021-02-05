@@ -142,18 +142,30 @@ function update_item_stock($db, $item_id, $stock){
   return execute_query($db, $sql, [$stock, $item_id]);
 }
 
+// 商品と商品画像を削除
 function destroy_item($db, $item_id){
+  // 特定の商品の商品情報を取得(item_id,name,stock,price,image,status)
   $item = get_item($db, $item_id);
+  // 商品が存在しない場合
   if($item === false){
+    // FALSEを返す
     return false;
   }
+  // トランザクション開始
   $db->beginTransaction();
+  // 商品の削除に成功した場合
   if(delete_item($db, $item['item_id'])
+    // かつ、画像の削除に成功した場合
     && delete_image($item['image'])){
+    // コミット処理
     $db->commit();
+    // TRUEを返す
     return true;
+  // 商品の削除または画像の削除に失敗した場合
   }
+  // ロールバック処理(取り消し)
   $db->rollback();
+  // FALSEを返す
   return false;
 }
 

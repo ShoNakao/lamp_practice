@@ -1,4 +1,6 @@
 <?php
+// iframeの読み込みを禁止
+header('X-FRAME-OPTIONS: DENY');
 // 定数を定義したファイルを読み込み
 require_once '../conf/const.php';
 // 関数を定義したファイルを読み込み
@@ -20,5 +22,9 @@ $db = get_db_connect();
 $user = get_login_user($db);
 // 公開されている商品の情報(item_id,name,stock,price,image,status)を取得
 $items = get_open_items($db);
+// トークンを生成
+$token = get_random_string();
+// SESSIONにトークンを登録
+set_session('csrf_token', $token);
 // 商品一覧ページのファイルを読み込む
 include_once VIEW_PATH . 'index_view.php';

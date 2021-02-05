@@ -1,4 +1,6 @@
 <?php
+// iframeの読み込みを禁止
+header('X-FRAME-OPTIONS: DENY');
 // 定数を定義したファイルを読み込み
 require_once '../conf/const.php';
 // 関数を定義したファイルを読み込み
@@ -25,5 +27,9 @@ if(is_admin($user) === false){
 }
 // 全ての商品情報を取得
 $items = get_all_items($db);
+// トークンを生成
+$token = get_random_string();
+// SESSIONにトークンを登録
+set_session('csrf_token', $token);
 // 管理者ページのファイルを読み込み
 include_once VIEW_PATH . '/admin_view.php';

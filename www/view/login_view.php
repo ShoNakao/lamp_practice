@@ -26,6 +26,7 @@
       </div>
       <!-- Bootstrapからボタンを利用 -->
       <input type="submit" value="ログイン" class="btn btn-primary">
+      <input type="hidden" name="csrf_token" value="<?php print $token; ?>">
     </form>
   </div>
 </body>

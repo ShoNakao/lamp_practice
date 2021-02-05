@@ -18,11 +18,11 @@ function get_get($name){
   return '';
 }
 
-// POSTで送信された値の取得
+// 引数をキーとするPOSTの取得
 function get_post($name){
-  // POSTで値が送信されている場合
+  // 引数をキーとするPOSTが存在する場合
   if(isset($_POST[$name]) === true){
-    // 値をを戻り値として返す
+    // 戻り値として引数をキーとするPOSTの値を返す
     return $_POST[$name];
   };
   // POSTで値が送信されていない場合、空を戻り値として返す
@@ -42,7 +42,7 @@ function get_file($name){
 
 // 引数をキーとするセッションの取得
 function get_session($name){
-  // 引数をキーとするセッションが存在する場合(ログインされている場合)
+  // 引数をキーとするセッションが存在する場合
   if(isset($_SESSION[$name]) === true){
     // 戻り値として引数をキーとするセッションの値を返す
     return $_SESSION[$name];
@@ -126,11 +126,17 @@ function save_image($image, $filename){
   return move_uploaded_file($image['tmp_name'], IMAGE_DIR . $filename);
 }
 
+// 画像の削除
 function delete_image($filename){
+  // 画像ファイルが存在する場合
   if(file_exists(IMAGE_DIR . $filename) === true){
+    // 画像ファイルを削除
     unlink(IMAGE_DIR . $filename);
+    // TRUEを返す
     return true;
+  // 画像ファイルが存在しない場合
   }
+  // FALSEを返す
   return false;
   
 }

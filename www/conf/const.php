@@ -7,7 +7,7 @@ define('MODEL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../model/');
 define('VIEW_PATH', $_SERVER['DOCUMENT_ROOT'] . '/../view/');
 
 
-define('IMAGE_PATH', '/assets/images/');
+define('IMAGE_PATH', '/assets/images/');    // imagesフォルダパスを定義
 define('STYLESHEET_PATH', '/assets/css/');  // cssフォルダのパスを定義
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );  // imagesフォルダのパスを定義
 
@@ -17,7 +17,7 @@ define('DB_USER', 'testuser');
 define('DB_PASS', 'password');
 define('DB_CHARSET', 'utf8');
 
-define('SIGNUP_URL', '/signup.php');
+define('SIGNUP_URL', '/signup.php');    // ユーザ登録画面(signup.php)のパスを定義
 define('LOGIN_URL', '/login.php');      // ログイン画面(login.php)のパスを定義
 define('LOGOUT_URL', '/logout.php');    // ログアウト画面(logout.php)のパスを定義
 define('HOME_URL', '/index.php');       // HOME画面(index.php)のパスを定義
@@ -40,8 +40,8 @@ define('USER_TYPE_NORMAL', 2);          // 一般ユーザは2
 define('ITEM_NAME_LENGTH_MIN', 1);
 define('ITEM_NAME_LENGTH_MAX', 100);
 
-define('ITEM_STATUS_OPEN', 1);
-define('ITEM_STATUS_CLOSE', 0);
+define('ITEM_STATUS_OPEN', 1);          // ステータスOPENを1に定義
+define('ITEM_STATUS_CLOSE', 0);         // ステータスCLOSEを0に定義
 
 // ステータスの配列を定義
 define('PERMITTED_ITEM_STATUSES', array(
