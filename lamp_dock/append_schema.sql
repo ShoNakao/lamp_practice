@@ -1,7 +1,7 @@
 CREATE TABLE orders (
     order_id int(11) NOT NULL AUTO_INCREMENT,
     user_id int(11) NOT NULL,
-    order_datetime DATETIME NOT NULL,
+    order_datetime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     primary key(order_id),
     INDEX(user_id)
 );
