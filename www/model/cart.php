@@ -3,6 +3,8 @@
 require_once MODEL_PATH . 'functions.php';
 // dbに関するファイルを
 require_once MODEL_PATH . 'db.php';
+// 購入履歴に関するファイルを読み込み
+require_once MODEL_PATH . 'order.php';
 
 // 特定のユーザのカートに入っている全ての商品情報をdbから取得
 function get_user_carts($db, $user_id){
@@ -153,35 +155,6 @@ function purchase_carts($db, $carts){
   $db->commit();
   // 購入したユーザのカート内の全商品を削除
   delete_user_carts($db, $carts[0]['user_id']);
-}
-
-// 購入履歴データを登録
-function insert_order($db, $user_id){
-  $sql = "
-    INSERT INTO
-      orders(
-        user_id
-      )
-    VALUES(?);
-  ";
-  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
-  return execute_query($db, $sql, [$user_id]);
-}
-
-// 購入明細データを登録
-function insert_order_detail($db, $order_id, $item_id, $order_price, $order_amount){
-  $sql = "
-    INSERT INTO
-      order_details(
-        order_id,
-        item_id,
-        order_price,
-        order_amount
-      )
-    VALUES(?, ?, ?, ?);
-  ";
-  // sqlを実行して成功した場合に true を、失敗した場合に false を返す
-  return execute_query($db, $sql, [$order_id, $item_id, $order_price, $order_amount]);
 }
 
 // 特定のユーザのカート内の全商品を削除

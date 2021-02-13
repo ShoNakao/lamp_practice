@@ -22,7 +22,8 @@ define('LOGIN_URL', '/login.php');      // ログイン画面(login.php)のパ�
 define('LOGOUT_URL', '/logout.php');    // ログアウト画面(logout.php)のパスを定義
 define('HOME_URL', '/index.php');       // HOME画面(index.php)のパスを定義
 define('CART_URL', '/cart.php');        // cart画面(cart.php)のパスを定義
-define('FINISH_URL', '/finish.php');
+define('FINISH_URL', '/finish.php');    // 購入完了画面(finish.php)のパスを定義
+define('ORDER_URL', '/order.php');      // 購入履歴画面(order.php)のパスを定義
 define('ADMIN_URL', '/admin.php');      // 管理者用ページ(admin.php)のパスを定義
 
 define('REGEXP_ALPHANUMERIC', '/\A[0-9a-zA-Z]+\z/');          // 半角英数字の正規表現を定義
