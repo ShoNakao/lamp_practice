@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="headerNav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
+          <a class="nav-link" href="<?php print(ORDER_URL);?>">購入履歴</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?php print(h(CART_URL));?>">カート</a>
         </li>
         <li class="nav-item">
