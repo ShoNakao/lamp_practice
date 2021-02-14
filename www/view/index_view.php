@@ -6,7 +6,7 @@
   
   <title>商品一覧</title>
   <!-- HOME画面に関係するCSSを読み込み -->
-  <link rel="stylesheet" href="<?php print(h(STYLESHEET_PATH . 'index.css')); ?>">
+  <link rel="stylesheet" href="<?php print(STYLESHEET_PATH . 'index.css'); ?>">
 </head>
 <body>
   <!-- headerの共通部分を読み込み -->
@@ -46,6 +46,38 @@
       <?php } ?>
       </div>
     </div>
+
+    <h2 class="mt-5 bg-warning text-white text-center">人気ランキング</h2>
+    <div class="card-deck">
+      <div class="row">
+      <?php $i = 1; ?>
+      <?php foreach($ranks as $rank){ ?>
+        <div class="col-4 item">
+          <div class="card h-100 text-center">
+            <div class="card-header">
+              <?php print($i++ . '位　' . h($rank['name'])); ?>
+            </div>
+            <figure class="card-body">
+              <img class="card-img" src="<?php print(h(IMAGE_PATH . $rank['image'])); ?>">
+              <figcaption>
+                <?php print(h(number_format($rank['price']))); ?>円
+                <?php if($rank['stock'] > 0){ ?>
+                  <form action="index_add_cart.php" method="post">
+                    <input type="submit" value="カートに追加" class="btn btn-primary btn-block">
+                    <input type="hidden" name="item_id" value="<?php print(h($rank['item_id'])); ?>">
+                    <input type="hidden" name="csrf_token" value="<?php print $token; ?>">
+                  </form>
+                <?php } else { ?>
+                  <p class="text-danger">現在売り切れです。</p>
+                <?php } ?>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      <?php } ?>
+      </div>
+    </div>
+
   </div>
   
 </body>

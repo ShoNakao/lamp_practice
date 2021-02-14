@@ -148,6 +148,36 @@ function get_user_order_details($db, $user_id, $order_id){
   return fetch_all_query($db, $sql, [$user_id, $order_id]);
 }
 
+// 購入数の多い商品1~3位の情報を取得
+function get_ranks($db){
+  $sql = "
+    SELECT
+      order_details.item_id,
+      sum(order_details.order_amount) as amount_total,
+      items.name,
+      items.stock,
+      items.price,
+      items.image,
+      items.status
+    FROM
+      order_details
+    JOIN
+      items
+    ON
+      order_details.item_id = items.item_id
+    WHERE
+      status = 1
+    GROUP BY
+      order_details.item_id
+    ORDER BY
+      amount_total DESC
+    LIMIT
+      3
+  ";
+  // sqlを実行して結果を返す
+  return fetch_all_query($db, $sql);
+}
+
 // 購入履歴データを登録
 function insert_order($db, $user_id){
   $sql = "
