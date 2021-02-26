@@ -11,11 +11,20 @@ define('IMAGE_PATH', '/assets/images/');    // imagesフォルダパスを定義
 define('STYLESHEET_PATH', '/assets/css/');  // cssフォルダのパスを定義
 define('IMAGE_DIR', $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' );  // imagesフォルダのパスを定義
 
-define('DB_HOST', 'mysql');
-define('DB_NAME', 'sample');
-define('DB_USER', 'testuser');
-define('DB_PASS', 'password');
-define('DB_CHARSET', 'utf8');
+if ($_SERVER['SERVER_ADDR'] === '118.27.7.241') {
+  define('DB_HOST', 'localhost');
+  define('DB_NAME', 'ec_site');
+  define('DB_USER', 'root');
+  define('DB_PASS', 'bYa3mzOz4');
+  define('DB_CHARSET', 'utf8');
+} else {
+  define('DB_HOST', 'mysql');
+  define('DB_NAME', 'sample');
+  define('DB_USER', 'testuser');
+  define('DB_PASS', 'password');
+  define('DB_CHARSET', 'utf8');
+}
+
 
 define('SIGNUP_URL', '/signup.php');    // ユーザ登録画面(signup.php)のパスを定義
 define('LOGIN_URL', '/login.php');      // ログイン画面(login.php)のパスを定義
