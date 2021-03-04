@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lamg="ja">
+ <head>
+  <meta charset="UTF-8">
+  <title>s.nakao portfolio</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/calcage.js"></script>
+ </head>
+ <body>
+  <div id="wrapper">
+
+   <!--ここからヘッダー及びナビの設定-->
+   <header>
+    <div id="nav_container">
+     <div id="nav">
+      <ul>
+       <li><a href="#profile"><img src="images/nav_profile.gif"></a></li>
+       <li><a href="#skill"><img src="images/nav_skill.gif"></a></li>
+       <li><a href="#works"><img src="images/nav_works.gif"></a></li>
+      </ul>
+     </div>
+    </div>
+   </header>
+
+
+   <!--ここからメインの設定-->
+   <main>
+    <section  id="profile">
+     <h2>Profile</h2>
+     <div id="main_profile_container">
+      <img src="images/myself.png" alt="プロフィール写真">
+      <article>
+       <p>はじめまして。大分県宇佐市出身、平成4年生まれの<script>document.write(calcAge(19920827))</script>歳、エンジニア志望の中尾 翔と申します。</p><br>
+       <p>大分大学を卒業後、新卒で佐伯市にある造船会社に入社しました。設計業務を担当し5年半務めましたが、会社や造船業界全体の先行きに不安を感じ転職を決意しました。</p><br>
+       <p>現在は職業訓練に通いながら、自宅ではオンラインスクールを活用してWebデザインやプログラミングについて勉強中です。</p><br>
+       <p>（2021年2月18日更新）</p>
+      </article>
+     </div>
+    </section>
+
+    <section id="skill">
+     <h2>Skill</h2>
+     <p>職業訓練とオンラインスクールを通してデザインやエンジニアのスキルを学習しました。</p>
+      <div id="main_skill_container">
+       <table>
+        <tr>
+         <th>&lt; 職業訓練 &gt;<br>期間：2020年12月～2021年3月(4ヵ月間)</th>
+        </tr>
+        <tr>
+         <td>
+          
+          <ul>
+           <li>Photoshop</li>
+           <li>Illustrator</li>
+           <li>HTML</li>
+           <li>CSS</li>
+           <li>Dreamweaver</li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       
+       <table>
+        <tr>
+         <th>&lt; オンラインスクール &gt;<br>期間：2020年11月～2021年2月(4ヵ月間)</th>
+        </tr>
+        <tr>
+         <td>
+          <ul>
+           <li>HTML</li>
+           <li>CSS</li>
+           <li>Javascript基礎</li>
+           <li>php</li>
+           <li>MySQL</li>
+           <li>Docker</li>
+           <li>Linux</li>
+           <li>Git</li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+     </div>
+    </section>
+
+    <section id="works">
+     <h2>Works</h2>
+     <div id="main_works_container">
+      <div class="works_item">
+       <p>&lt; ラーメンヒューリス &gt;</p>
+       <p>オリジナルのラーメン屋さんのHPを作成。</p>
+       <p>HTML/CSS/Javascript</p>
+       <a href="../ramen_heuris/index.html" target="_blank"><img src="images/ramen_heuris.jpg" alt="ラーメンヒューリス"></a>
+       <p>※画像クリックでページへジャンプ</p><br>
+       <p>Illustratorでデザインカンプを作成しました。こだわりは各ページにJavascriptを使ってミニゲームのようなもの配置したところです。</p>
+      </div>
+      <div class="works_item">
+       <p>&lt; DTP作品集 &gt;</p>
+       <a><img src="images/myself.png" alt="プロフィール写真"></a>
+       <p>あああああああああああああああ</p>
+      </div>
+     </div>
+    </section>
+
+   </main>
+
+   <!--ここからフッターの設定-->
+   <footer id="footer">
+    <p><small>&copy; 2021 Sho Nakao. All Rights Reserved.</small></p>
+   </footer>
+
+  </div>
+ </body>
