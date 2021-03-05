@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lamg="ja">
+ <head>
+  <meta charset="UTF-8">
+  <title>ラーメンひゅーりす</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+ </head>
+ <body>
+  <div id="wrapper">
+
+   <!--ここからヘッダーの設定-->
+   <header id="header">
+    <h1 id="logo">
+     <a href="index.html"><img src="images/logo_name.png" alt="ラーメンひゅーりす" width="300" height="100"></a>
+    </h1>
+    <p id="tel">
+     <img src="images/tel.png" alt="電話番号" width="300" height="100">
+    </p>
+   </header>
+
+   <!--ここからナビの設定-->
+   <nav id="nav">
+    <ul>
+     <li>
+      <a href="index.html"><img src="images/btn/nav-top.gif" alt="トップ" width="400" height="50"></a>
+     </li>
+     <li>
+      <a href="menu.html"><img src="images/btn/nav-menu.gif" alt="メニュー" width="400" height="50"></a>
+     </li>
+     <li>
+      <a href="contact.html"><img src="images/btn/nav-contact.gif" alt="お問い合わせ" width="400" height="50"></a>
+     </li>
+    </ul>
+   </nav>
+
+   <!--ここからビジュアルの設定-->
+   <div id="visual">
+    <p><img src="images/visual1.jpg" alt="メインビジュアル" width="1200" height="300"></p>
+    <p><img src="images/visual2.jpg" alt="メインビジュアル" width="1200" height="300"></p>
+   </div>
+
+   <script type="text/javascript">
+    $(function(){
+     $('#visual').slick({
+      autoplay: true, //自動再生
+      dots: true, //ドットインジケータの表示
+     });
+    });
+   </script>
+
+   <!--ここからメインの設定-->
+   <div id="main">
+    <article>
+     <h2>お問い合わせ</h2>
+     <form method="post" action="#">
+      <div>
+      <label for="name">氏名</label><br>
+      <input type="text" name="name" id="name">
+      </div>
+
+      <div>
+      <label for="tel1">電話番号</label><br>
+      <input type="tel" name="tel1" id="tel1">
+      </div>
+
+      <div>
+      <label for="mail">E-mail</label><br>
+      <input type="email" name="mail" id="mail">
+      </div>
+
+      <div>
+      <p>性別</p>
+      <input type="radio" name="gender" value="men" id="men"><label for="men">男</label>
+      <input type="radio" name="gender" value="women" id="women"><label for="women">女</label>
+      </div>
+
+      <div>
+      <label for="msg">お問い合わせ</label><br>
+      <textarea name="msg" id="msg" cols="37"></textarea>
+      </div>
+
+      <div id="submit">
+      <input type="image" src="images/btn/submit_btn.gif" name="submit" value="送信" onclick="return confirm('入力内容に間違いはありませんか？')">
+      </div>
+     </form>
+    </article>
+   </div>
+
+   <!--ここからサブの設定-->
+   <div id="sub">
+    <aside>
+     <ul>
+      <li id="rpg">
+       <h2>～スライムバトルRPG～</h2>
+       <p>スライムを倒せればハッピー♪</p>
+       <p><input type="button" value="クリックでバトル開始!!" onclick="battle()"></p>
+       <span id="user_hp"></span><br>
+       <span id="computer_hp"></span><br><br>
+       <p id="log"></p>
+       <p id="result"></p>
+
+       <script>
+
+        function battle() {
+
+		var user     = 10;
+		var computer = 10;
+		var attacker = ['勇者', 'スライム'];
+
+		document.getElementById("user_hp").innerHTML = "[勇者のHP：" + user + "]";
+		document.getElementById("computer_hp").innerHTML = "[スライムのHP：" + computer + "]";
+		document.getElementById("log").innerHTML = "スライムが現れた!!";
+
+		var user_attack = function() {
+
+			var selectnum_damage   = Math.floor(Math.random() * 6);
+			computer = computer - selectnum_damage;
+			if (computer <= 0) { 
+				computer = 0;
+			}
+
+			document.getElementById("log").innerHTML = attacker['0'] + "の攻撃<br>" +
+	                                                           selectnum_damage + "ダメージ!!<br>" +
+	                                                           attacker['1'] + "の残りHP " + computer + "<br><br>";
+			document.getElementById("computer_hp").innerHTML = "[スライムのHP：" + computer + "]";
+
+			if (computer <= 0) {
+				document.getElementById("result").innerHTML = attacker['0'] + "は戦いに勝利した!";
+				exit();   
+			} else {
+				var timerID = setTimeout(computer_attack,3000);	
+			}
+		}
+
+		var computer_attack = function() {
+
+			var selectnum_damage   = Math.floor(Math.random() * 6);
+			user = user - selectnum_damage;
+			if (user <= 0) {
+				 user = 0;
+			}
+
+			document.getElementById("log").innerHTML = attacker['1'] + "の攻撃<br>" +
+	                                                           selectnum_damage + "ダメージ!!<br>" +
+	                                                           attacker['0'] + "の残りHP " + user + "<br><br>";
+			document.getElementById("user_hp").innerHTML = "[勇者のHP：" + user + "]";
+
+			if (user <= 0) {
+				document.getElementById("result").innerHTML = attacker['0'] + "は戦いに負けた、、、";
+				exit();
+			} else {
+			var timerID = setTimeout(user_attack,3000);	
+			}
+		}
+
+		var timerID = setTimeout(user_attack,3000);
+
+	}
+
+       </script>
+      </li>
+      <li>
+       <a href="#"><img src="images/line-ad.gif" alt="オリジナルバナー" width="300" height="200"></a>
+      </li>
+     </ul>
+    </aside>
+   </div>
+
+   <!--ここからフッターの設定-->
+   <footer id="footer">
+    <p><small>&copy; 2021 RAMEN HEURIS</small></p>
+   </footer>
+
+  </div>
+ </body>

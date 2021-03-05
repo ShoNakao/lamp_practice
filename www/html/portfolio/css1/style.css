@@ -87,6 +87,7 @@ main h2 {
 
 #main_skill_container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	margin: 0 auto;
 	padding-top: 10px;
@@ -98,7 +99,12 @@ main h2 {
 	border-collapse: separate;
 	border-radius: 10px;
 	background-color: #3d4a41;
-	width: 45%;
+	width: 47%;
+}
+
+#main_skill_container table:first-child {
+	width: 100%;
+	margin-bottom: 40px;
 }
 
 #main_skill_container table th,
@@ -114,6 +120,7 @@ main h2 {
 
 #main_works_container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	margin: 0 auto;
 	padding-top: 10px;
@@ -123,6 +130,7 @@ main h2 {
 	width: 45%;
 	background-color: #3d4a41;
 	padding: 15px;
+	margin-bottom: 30px;
 }
 
 .works_item p {
