@@ -1,0 +1,77 @@
+/*common_part*/
+body {
+    font-size: 14px;
+    background-color: #ffffff;
+    min-width: 1000px;
+}
+
+header {
+    color: #ffffff;
+    background-color: #5E4037;
+    height: 60px;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: 0 auto;
+    
+}
+
+header a, header p {
+    line-height: 60px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header img {
+    display: block;
+    height: 40px;
+    line-height:60px;
+    margin: 10px 0;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 100px auto;
+}
+
+.main-form-container {
+    display: flex;
+    justify-content: space-between;
+    line-height: 25px;
+    margin: 10px 0;
+}
+
+main form input {
+    width: 250px;
+    
+}
+
+.img-login {
+    width: 150px;
+    margin: 10px 0 10px auto;
+}
+
+main form a {
+    margin: 20px auto 10px auto;
+}
+
+/*registration_fin.php*/
+main {
+    width: 350px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+main p {
+    margin: 10px auto;
+}
+
+main a {
+    display: block;
+    margin: 20px auto 0 auto;
+}

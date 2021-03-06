@@ -1,0 +1,107 @@
+/*common_part*/
+body {
+    font-size: 14px;
+    background-color: #ffffff;
+    min-width: 1000px;
+}
+
+header {
+    color: #ffffff;
+    background-color: #5E4037;
+    height: 60px;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: 0 auto;
+    
+}
+
+header a, header p {
+    line-height: 60px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header img {
+    display: block;
+    height: 40px;
+    line-height:60px;
+    margin: 10px 0;
+}
+
+/*cart*/
+.msg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 850px;
+    margin: 10px auto 0 auto;
+    color: blue;
+    font-size: 20px;
+}
+
+main {
+    width: 850px;
+    margin: 50px auto;
+}
+
+.title {
+    border-bottom: 1px solid #707070;
+    padding: 5px 0;
+    font-size: 20px;
+}
+
+.complete {
+    font-size: 30px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.complete_item {
+    text-decoration: line-through;
+    color: red;
+}
+
+.prefecture tr {
+    height: 30px;
+}
+
+.prefecture {
+    background-color: #D7CCC8;
+    width: 850px;
+}
+
+.prefecture th {
+    vertical-align: middle;
+    border:1px solid #707070;
+    width: 250px;
+}
+
+.prefecture .background-color-th {
+    background-color: #795549;
+}
+
+.prefecture td {
+    vertical-align: middle;
+    border:1px solid #707070;
+    padding-left: 5px;
+}
+
+.prefecture .background-color-td {
+    background-color: white;
+}
+
+.history {
+    width: 850px;
+    margin: 50px 0;
+}
+
+.history td {
+    text-align: center;
+    vertical-align: middle;
+    border-bottom:1px solid #707070;
+    height: 150px;
+}

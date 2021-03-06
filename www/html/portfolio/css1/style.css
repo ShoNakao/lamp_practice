@@ -137,6 +137,11 @@ main h2 {
 	text-align: center;
 }
 
+.works_item p:last-child {
+	text-indent: 1em;
+	text-align: justify;
+}
+
 .works_item a:hover {
 	opacity: 0.5;
 }
