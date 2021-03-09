@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $data_name[] = $row;
             }
             if (count($data_name) !== 1) {
-                $err_msg[] = 'エラー!：ユーザー名に誤りがあ�����ます。';
+                $err_msg[] = 'エラー!：ユーザー名に誤りがあります。';
             }
         }
         
