@@ -1,0 +1,31 @@
+@charset"utf-8";
+
+form {
+	width: 350px;
+	margin: 70px auto;
+}
+
+#main div {
+	margin-bottom: 20px;
+}
+
+#name, #tel1, #mail {
+	width: 350px;
+	height: 20px;
+}
+
+textarea {
+	width: 350px;
+	height: 100px;
+}
+
+#main #submit {
+	text-align: center;
+	margin-top: 70px;
+	margin-bottom: 0;
+}
+
+#sub #rpg {
+	height: 300px;
+	background-color: #328da8;
+}

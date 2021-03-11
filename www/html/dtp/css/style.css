@@ -1,0 +1,38 @@
+@charset"utf-8";
+
+body {
+	background-color: #a18f8f;
+}
+
+h1 {
+	padding: 30px 0;
+	text-align: center;
+	background-color: #756767;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 980px;
+	text-align: center;
+}
+
+#wrapper h2 {
+	margin: 30px 0;
+}
+
+#business_card_container {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 100px;
+}
+
+#direct_mail_container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 100px;
+}
+
+#a4_poster_container p {
+	padding-bottom: 50px;
+}

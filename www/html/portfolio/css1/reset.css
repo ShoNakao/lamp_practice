@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+
+body{
+	font-family:"ＭＳ ゴシック","ＭＳ Ｐ明朝";
+	line-height: 1.5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: none;
+	vertical-align: bottom;
+}
+
+a {
+	text-decolation: none;
+}
+
+li {
+	list-style-type: none;
+}

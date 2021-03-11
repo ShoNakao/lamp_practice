@@ -1,0 +1,154 @@
+/*common_part*/
+body {
+    font-size: 14px;
+    background-color: #ffffff;
+    min-width: 1000px;
+}
+
+header {
+    color: #ffffff;
+    background-color: #5E4037;
+    height: 60px;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: 0 auto;
+    
+}
+
+header a, header p {
+    line-height: 60px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header img {
+    display: block;
+    height: 40px;
+    line-height:60px;
+    margin: 10px 0;
+}
+
+/*product_list*/
+
+.msg {
+    width: 850px;
+    margin: 10px auto 0 auto;
+    color: blue;
+    font-size: 20px;
+}
+
+main {
+    width: 850px;
+    margin: 50px auto;
+}
+
+.title {
+    border-bottom: 1px solid #707070;
+    padding: 5px 0;
+    font-size: 20px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 50px 0;
+}
+
+.section-container-rank-number {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0 0px 0;
+}
+
+.div-container-rank-number {
+    background-color: #B71C1C;
+    width: 200px;
+    padding: 0 25px;
+    text-align: center;
+}
+
+.section-container-rank-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.div-container-rank-product {
+    background-color: #A1887F;
+    width: 200px;
+    padding: 0 25px;
+    text-align: center;
+}
+
+section p {
+    margin: 10px 0;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+}
+
+.item p {
+    margin: 0;
+}
+
+.item img {
+    height: 20px;
+}
+
+tr {
+    height: 30px;
+}
+
+table {
+    background-color: #D7CCC8;
+    width: 850px;
+}
+
+table th {
+    vertical-align: middle;
+    border:1px solid #707070;
+    width: 250px;
+}
+
+.background-color-th {
+    background-color: #795549;
+}
+
+table td {
+    vertical-align: middle;
+    border:1px solid #707070;
+    padding-left: 5px;
+}
+
+.background-color-td {
+    background-color: white;
+}
+
+.prefecture {
+    background-color: #A1887F;
+    width: 850px;
+    margin: 30px 0;
+    text-align: center;
+    line-height: 30px;
+}
+
+.section-container-product {
+    padding:10px 25px 10px 25px;
+    border: 1px solid #707070;
+    margin-bottom: 10px;
+}
+
+.section-container-product form p {
+    color: red;
+}

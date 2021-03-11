@@ -1,0 +1,21 @@
+@charset"utf-8";
+
+#main table {
+	margin: 70px auto;
+}
+
+#main th {
+	width: 200px;
+	height: 200px;
+	text-align: left;
+}
+
+#main td {
+	height: 200px;
+	text-align: center;
+}
+
+#sub #janken {
+	height: 200px;
+	background-color: #f00;
+}

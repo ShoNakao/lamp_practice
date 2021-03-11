@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lamg="ja">
+ <head>
+  <meta charset="UTF-8">
+  <title>ラーメンひゅーりすトップページ</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- visualスライド用 -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+ </head>
+ <body>
+  <div id="wrapper">
+
+   <!--ここからヘッダーの設定-->
+   <header id="header">
+    <h1 id="logo">
+     <a href="index.html"><img src="images/logo_name.png" alt="ラーメンひゅーりす" width="300" height="100"></a>
+    </h1>
+    <p id="tel">
+     <img src="images/tel.png" alt="電話番号" width="300" height="100">
+    </p>
+   </header>
+
+   <!--ここからナビの設定-->
+   <nav id="nav">
+    <ul>
+     <li>
+      <a href="index.html"><img src="images/btn/nav-top.gif" alt="トップ" width="400" height="50"></a>
+     </li>
+     <li>
+      <a href="menu.html"><img src="images/btn/nav-menu.gif" alt="メニュー" width="400" height="50"></a>
+     </li>
+     <li>
+      <a href="contact.html"><img src="images/btn/nav-contact.gif" alt="お問い合わせ" width="400" height="50"></a>
+     </li>
+    </ul>
+   </nav>
+
+   <!--ここからビジュアルの設定-->
+   <div id="visual">
+    <p><img src="images/visual1.jpg" alt="メインビジュアル" width="1200" height="300"></p>
+    <p><img src="images/visual2.jpg" alt="メインビジュアル" width="1200" height="300"></p>
+   </div>
+
+   <!-- スライド -->
+   <script type="text/javascript">
+    $(function(){
+     $('#visual').slick({
+      autoplay: true, //自動再生
+      dots: true, //ドットインジケータの表示
+     });
+    });
+   </script>
+
+   <!--ここからメインの設定-->
+   <div id="main">
+    <article>
+     <h2>トップページ</h2>
+     <section>
+      <h3>新着情報</h3>
+      <ul>
+       <li><time datetime="2020-11-11">2020年11月11日</time>LINE@はじめました。</li>
+       <li><time datetime="2020-10-10">2020年10月10日</time>ランチセットはじめました。</li>
+       <li><time datetime="2020-09-09">2020年9月9日</time>オープンしました。</li>
+      </ul>
+     </section>
+     <section>
+      <h3>アクセス</h3>
+      <figure>
+       <a href="https://www.google.co.jp/maps/place/%E3%83%92%E3%83%A5%E3%83%BC%E3%83%AA%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E5%AD%A6%E9%99%A2+%E5%88%A5%E5%BA%9C%E6%A0%A1/@33.2812364,131.4980409,16z/data=!3m1!5s0x3546a6e8b2839723:0x434b19a4c8d60b18!4m5!3m4!1s0x3546a6ef52d3ffff:0xac8f07fd70162fdb!8m2!3d33.2807162!4d131.4962599?hl=ja" target="_blank" onclick="return confirm('外部のページへ移動します。よろしいですか？')">
+        <img src="images/map.png" alt="地図" width="270" height="280">
+       </a>
+      </figure>
+     </section>
+    </article>
+   </div>
+
+   <!--ここからサブの設定-->
+   <div id="sub">
+    <aside>
+     <ul>
+      <li id="kao">
+       <p id="kao_title">～今日の運勢～</p>
+       <p><span id="red">赤：最高</span> / <span id="yellow">黄色：いいね</span> /<br> <span id="brown">茶色：平常運転</span> / <span id="blue">青:しょぼぼ</span></p>
+       <p><script type="text/javascript">
+        var imglist = new Array(
+           "images/kao/kao_red.png",
+           "images/kao/kao_yellow.png",
+           "images/kao/kao_brown.png",
+           "images/kao/kao_blue.png" );
+        var selectnum = Math.floor(Math.random() * imglist.length);
+        var output = "<img src=" + imglist[selectnum] + ">";
+        document.write(output);
+       </script></p>
+      </li>
+      <li>
+       <a href="#"><img src="images/line-ad.gif" alt="オリジナルバナー" width="300" height="200"></a>
+      </li>
+     </ul>
+    </aside>
+   </div>
+
+   <!--ここからフッターの設定-->
+   <footer id="footer">
+    <p><small>&copy; 2021 RAMEN HEURIS</small></p>
+   </footer>
+
+  </div>
+ </body>
